@@ -16,6 +16,8 @@ void do_save(Phone_Directory&);
 
 int main(int argc, char* argv[])
 {
+	//argc = 2; I added these two lines to be able to test the code without command-line arguments
+	//argv[1] = "directory.txt";
 	if (argc < 2) {
 		cerr << "Must specify the name of the data file"
 			" that contains the directory\n";
@@ -90,8 +92,13 @@ void do_remove_entry(Phone_Directory& the_directory) // Exercise 1.8: please com
 	string name;
 	cout << "Enter name: ";
 	getline(cin, name);
-	// Complete the rest of this function 
-	
+	string number = the_directory.remove_entry(name);
+	if (number == ""){
+		cout << name << " was not found in the directory." << endl;
+	}
+	else{
+		cout << name << " (" << number << ") has been removed from the directory!" << endl;
+	}
 }
 
 void do_save(Phone_Directory& the_directory)
